@@ -52,6 +52,26 @@ animation-time = 0.4s
       padding-left: 0px
       width: 100%
 
+  // Links menu
+  .link-list
+    grid-column: 2
+    font-size: 80%
+
+    .link-list-item
+      margin: .6em auto
+      display: grid
+      grid-template-columns: auto 1fr
+      column-gap: .25em
+      align-items: baseline
+      text-color(primary-color, primary-color-light, primary-color-dark)
+    
+      svg
+        fill-color(primary-color, primary-color-light, primary-color-dark)
+        grid-column: 1
+      a
+        text-color(primary-color, primary-color-light, primary-color-dark)
+        grid-column: 2
+
 .menu-search-box
   margin: 60px 20px 30px 21px
   padding: 10px 10px

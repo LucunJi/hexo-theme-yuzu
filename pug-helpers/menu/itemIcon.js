@@ -1,5 +1,12 @@
 exports.default = function itemIcon(item) {
-  if (item.widget === "Archives") return "icon-archive";
-  else if (item.widget === "Tags") return "icon-tags";
-  else return "icon-chevron-right";
+    switch (item.widget?.toLowerCase()) {
+        case 'archives':
+            return 'icon-archive';
+        case 'tags':
+            return 'icon-tags';
+        case 'links':
+            return 'icon-link-45deg';
+        default:
+            return 'icon-chevron-right';
+    }
 }

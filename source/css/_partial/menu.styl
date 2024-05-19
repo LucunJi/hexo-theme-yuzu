@@ -52,3 +52,19 @@
     font-size: 0.6em
     margin-top: -0.5em
     text-color(secondary-gray, secondary-gray-light, secondary-gray-dark)
+
+  // Links menu
+  .link-list-item
+    display: grid
+    grid-template-columns: auto 1fr
+    column-gap: .25em
+    align-items: baseline
+    text-color(primary-color, primary-color-light, primary-color-dark)
+
+    svg
+      fill-color(primary-color, primary-color-light, primary-color-dark)
+      grid-column: 1
+    a
+      text-color(primary-color, primary-color-light, primary-color-dark)
+      grid-column: 2
+

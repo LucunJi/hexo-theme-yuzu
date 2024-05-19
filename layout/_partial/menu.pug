@@ -3,7 +3,12 @@
     - const item = config.menu[name];
     .menu-nav-item
       .menu-nav-title
-        a(href= item_url(item))
-          span= name
+        - if (item.widget.toLowerCase() === 'links') {
+          a
+            span= name
+        - } else {
+          a(href= item_url(item))
+            span= name
+        - }
       .menu-nav-content
         | !{ item_widget(item) }

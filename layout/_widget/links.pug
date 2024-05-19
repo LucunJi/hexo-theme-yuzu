@@ -1,0 +1,9 @@
+ul.link-list
+  - for (const link of config.links) {
+    - const icon = link.icon.match(/^(?:(fas|fab|custom):)?(.*)$/);
+    - if (icon[1] === undefined) icon[1] = 'fas';
+    - const icon_elem = icon[1] !== 'custom' ? fa_inline(icon[2], {prefix: icon[1]}) : icon[2];
+    li.link-list-item
+        != icon_elem
+        a.link-list-link(href=url_for( link.url ))= link.name
+  - }
