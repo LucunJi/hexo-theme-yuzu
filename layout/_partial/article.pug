@@ -11,6 +11,7 @@ article#post.post
 
   .post-info
     | !{ partial('_partial/post/word-count', {post: post}) }
+  - if (post.copyright)
     | !{ partial('_partial/post/copyright', {post: post}) }
 
   .article-entry(itemprop="articleBody")
