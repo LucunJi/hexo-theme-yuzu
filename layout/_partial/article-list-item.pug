@@ -1,3 +1,21 @@
+-
+  function renderMarkdown(text) {
+    const filtered = text.replaceAll(
+      /!\[(?<alt>[^\]]*)\]\((?<url>.*?)(?=\"|\))(?<title>\".*\")?\)/g,
+      (match, alt, url, title, offset, string, groups) => {
+        // non-exist or not relative to current path
+        if (!url || url.match(/^\s*(?:[a-zA-Z0-9+.-]+:|\/)/)) return match;
+        if (alt === undefined) alt = '';
+        if (title === undefined) title = '';
+        const newUrl = (!post.path.startsWith('/') ? '/' : '')
+          + post.path
+          + (!post.path.endsWith('/') ? '/' : '')
+          + url;
+        return `![${alt}](${newUrl}${title})`
+      });
+    return render(filtered, 'md');
+  }
+
 article.post-item(data-condense= condense)
   //- post title
   h2.post-item-title
@@ -10,7 +28,7 @@ article.post-item(data-condense= condense)
   //- post excerpt
   if post.excerpt
     .article-entry
-      | !{ post.excerpt }
+      | !{ renderMarkdown(post.excerpt) }
 
       if theme.excerpt_link
         p.article-more-link
